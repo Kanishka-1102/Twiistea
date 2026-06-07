@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+  }
+  #root { width: 100%; min-height: 100vh; text-align: left; }
+  h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 bg-[#1B4332] text-white px-7 py-3 rounded-full text-sm font-medium tracking-wide transition-all duration-200 hover:bg-[#155227] active:scale-95 disabled:opacity-50;
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 border border-[#1B4332] text-[#1B4332] px-7 py-3 rounded-full text-sm font-medium tracking-wide transition-all duration-200 hover:bg-[#1B4332] hover:text-white active:scale-95;
+  }
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 bg-[#B5821F] text-white px-7 py-3 rounded-full text-sm font-medium tracking-wide transition-all duration-200 hover:bg-[#9a6e1a] active:scale-95;
+  }
+  .btn-sm {
+    @apply px-5 py-2 text-xs;
+  }
+  .input-field {
+    @apply w-full px-4 py-3 border border-[#E5DDD0] rounded-lg text-sm text-[#1a1a1a] bg-white placeholder-[#999] focus:outline-none focus:border-[#1B4332] transition-colors duration-200;
+  }
+  .section-pad { @apply py-16 md:py-24; }
+  .container-pad { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; }
+}
+
+/* Marquee */
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee-inner { animation: marquee 30s linear infinite; }
+.marquee-inner:hover { animation-play-state: paused; }
+
+/* Skeleton loading */
+.skeleton {
+  background: linear-gradient(90deg, #f0ebe4 25%, #faf7f3 50%, #f0ebe4 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+@keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #faf9f7; }
+::-webkit-scrollbar-thumb { background: #c5b8a8; border-radius: 3px; }
+
+/* Hide scrollbar but keep scroll */
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
