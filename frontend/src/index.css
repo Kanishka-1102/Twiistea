@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -14,7 +14,7 @@
     -webkit-font-smoothing: antialiased;
   }
   #root { width: 100%; min-height: 100vh; text-align: left; }
-  h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; }
+  h1, h2, h3 { font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif; }
 }
 
 @layer components {
@@ -58,3 +58,51 @@
 /* Hide scrollbar but keep scroll */
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* ── Floating tea leaf particles ── */
+@keyframes leafFloat {
+  0%   { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
+  12%  { opacity: 0.55; }
+  88%  { opacity: 0.55; }
+  100% { transform: translateY(-110px) translateX(14px) rotate(22deg); opacity: 0; }
+}
+.leaf-particle { animation: leafFloat var(--dur, 5s) var(--delay, 0s) ease-in-out infinite; }
+
+/* ── Gold shimmer sweep on text ── */
+@keyframes goldSweep {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.shimmer-gold {
+  background: linear-gradient(90deg, #C8921A 15%, #F5E4A0 38%, #E8C878 52%, #D4A853 72%, #C8921A 90%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: goldSweep 5s linear infinite;
+}
+
+/* ── Steam wisps (on the hero badge) ── */
+@keyframes steamUp {
+  0%   { transform: translateY(0) scaleX(1); opacity: 0.5; }
+  50%  { opacity: 0.35; }
+  100% { transform: translateY(-18px) scaleX(1.3); opacity: 0; }
+}
+.steam-a { animation: steamUp 2s ease-out infinite; }
+.steam-b { animation: steamUp 2s 0.65s ease-out infinite; }
+.steam-c { animation: steamUp 2s 1.3s ease-out infinite; }
+
+/* ── Card tilt (testimonials) ── */
+.tilt-card { transition: transform 0.15s ease, box-shadow 0.15s ease; transform-style: preserve-3d; }
+.tilt-card:hover { box-shadow: 0 12px 40px rgba(10,26,15,0.12); }
+
+/* ── Diagonal stripe texture for dark sections ── */
+.diagonal-texture {
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgba(212,168,83,0.028) 0px,
+    rgba(212,168,83,0.028) 1px,
+    transparent 1px,
+    transparent 48px
+  );
+}
