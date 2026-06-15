@@ -36,11 +36,8 @@ export default function Login() {
         <div className="absolute inset-0 opacity-5"
           style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231B4332' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")` }} />
 
-        <Link to="/" className="relative flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-[#1B4332] flex items-center justify-center">
-            <span className="text-white font-bold text-lg" style={{ fontFamily: 'Playfair Display, serif' }}>T</span>
-          </div>
-          <span className="font-bold text-2xl text-[#1a1a1a]" style={{ fontFamily: 'Playfair Display, serif' }}>Twistea</span>
+        <Link to="/" className="relative flex items-center gap-2">
+          <img src="/images/logo-twistea.png" alt="TwisTea" className="h-12 w-auto object-contain" />
         </Link>
 
         <div className="relative text-center">
@@ -66,10 +63,7 @@ export default function Login() {
           {/* Mobile logo */}
           <div className="lg:hidden text-center mb-8">
             <Link to="/" className="inline-flex items-center gap-2">
-              <div className="w-10 h-10 bg-[#1B4332] rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-lg" style={{ fontFamily: 'Playfair Display, serif' }}>T</span>
-              </div>
-              <span className="font-bold text-2xl text-[#1a1a1a]" style={{ fontFamily: 'Playfair Display, serif' }}>Twistea</span>
+              <img src="/images/logo-twistea.png" alt="TwisTea" className="h-12 w-auto object-contain" />
             </Link>
           </div>
 
@@ -133,11 +127,6 @@ export default function Login() {
               {isRegister ? 'Sign In' : 'Register Free'}
             </button>
           </p>
-
-          <div className="mt-6 p-4 bg-[#F5F1EA] rounded-xl text-center">
-            <p className="text-xs text-[#999] mb-1">Demo Admin Access</p>
-            <p className="text-xs text-[#555] font-medium">admin@twistea.in · admin123</p>
-          </div>
 
           <Link to="/" className="flex items-center justify-center gap-1 text-center mt-6 text-[#999] text-sm hover:text-[#1B4332] transition-colors">
             ← Continue shopping without signing in
