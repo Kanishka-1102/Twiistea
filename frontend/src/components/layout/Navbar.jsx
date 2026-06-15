@@ -51,13 +51,8 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-16">
 
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-2.5 flex-shrink-0">
-              <div className="w-8 h-8 rounded-full bg-[#1B4332] flex items-center justify-center">
-                <span className="text-white font-bold text-sm" style={{ fontFamily: 'Playfair Display, serif' }}>T</span>
-              </div>
-              <span className="text-[#1a1a1a] font-bold text-lg tracking-tight" style={{ fontFamily: 'Playfair Display, serif' }}>
-                Twistea
-              </span>
+            <Link to="/" className="flex items-center gap-2 flex-shrink-0">
+              <img src="/images/logo-twistea.png" alt="TwisTea" className="h-10 w-auto object-contain" />
             </Link>
 
             {/* Desktop nav */}
