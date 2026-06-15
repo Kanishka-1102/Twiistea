@@ -34,118 +34,176 @@ function FadeIn({ children, className = '', delay = 0 }) {
 function Hero() {
   const navigate = useNavigate();
   return (
-    <section style={{ position: 'relative', minHeight: '100svh', overflow: 'hidden' }}>
+    /*
+      Section is the positioning context.
+      paddingBottom = white space below the card where leaves sit.
+      Leaves are a SIBLING of the card — outside overflow:hidden — so they
+      overlap the card bottom without being clipped by it.
+    */
+    <section style={{
+      background: '#ffffff',
+      position: 'relative',
+      paddingBottom: 'clamp(60px, 10vw, 130px)',
+    }}>
 
-      {/* Background image */}
-      <img
-        src="/images/hero section.png"
-        alt="TwisTea tea garden"
-        style={{
-          position: 'absolute', inset: 0,
-          width: '100%', height: '100%',
-          objectFit: 'cover', objectPosition: 'center center',
-        }}
-      />
-
-      {/* Gradient: dark on left/bottom, clear on right — lets image breathe */}
+      {/* ── "SIP PURE. FEEL NATURE." heading ── */}
       <div style={{
-        position: 'absolute', inset: 0,
-        background: 'linear-gradient(120deg, rgba(4,20,10,0.82) 0%, rgba(4,20,10,0.60) 45%, rgba(4,20,10,0.22) 75%, rgba(4,20,10,0.05) 100%)',
-      }} />
+        padding: 'clamp(40px, 5.5vw, 72px) clamp(16px, 3.33vw, 48px)',
+      }}>
+        <h1 style={{
+          fontFamily: "'Outfit', 'Inter', Arial, sans-serif",
+          fontSize: 'clamp(2rem, 8.02vw, 7.22rem)',
+          fontWeight: 700,
+          color: '#3AB449',
+          lineHeight: 1,
+          letterSpacing: '0',
+          textTransform: 'uppercase',
+          margin: 0,
+          whiteSpace: 'nowrap',
+        }}>
+          SIP PURE. FEEL NATURE.
+        </h1>
+      </div>
 
-      {/* ── Content: column layout — headline top, CTA bottom ── */}
+      {/* ── Hero card ── clips only its own background image ── */}
       <div style={{
-        position: 'relative', zIndex: 2,
-        minHeight: '100svh',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        padding: 'clamp(90px,13vh,150px) clamp(24px,6vw,88px) clamp(56px,9vh,96px)',
+        margin: '0 clamp(16px, 3.33vw, 48px)',
+        height: 'clamp(400px, 54vw, 660px)',
+        borderRadius: 'clamp(16px, 2vw, 28px)',
+        overflow: 'hidden',
+        position: 'relative',
       }}>
 
-        {/* ── TOP: Massive headline ── */}
-        <div>
-          <h1 style={{
-            fontFamily: 'Cinzel, Georgia, serif',
-            fontSize: 'clamp(3.6rem, 9vw, 8.2rem)',
-            fontWeight: 700,
+        {/* Background image — sunny top, golden sky */}
+        <img
+          src="/images/hero section.png"
+          alt="TwisTea tea garden"
+          style={{
+            position: 'absolute', inset: 0,
+            width: '100%', height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center top',
+          }}
+        />
+
+        {/* Gradient — dark left, clear right */}
+        <div style={{
+          position: 'absolute', inset: 0,
+          background: 'linear-gradient(100deg, rgba(3,12,5,0.78) 0%, rgba(3,12,5,0.55) 38%, rgba(3,12,5,0.20) 65%, rgba(3,12,5,0.00) 88%)',
+        }} />
+
+        {/* ── Text — top-left, Figma: X:48 Y:262, gap:24 ── */}
+        <div style={{
+          position: 'absolute',
+          top: 'clamp(32px, 4.5vw, 64px)',
+          left: 'clamp(24px, 3.33vw, 48px)',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '24px',
+          maxWidth: 'clamp(240px, 42%, 520px)',
+          zIndex: 3,
+        }}>
+          <h2 style={{
+            fontFamily: "'Outfit', 'Inter', Arial, sans-serif",
+            fontSize: 'clamp(1.6rem, 4vw, 3.6rem)',
+            fontWeight: 800,
             color: '#FFFFFF',
-            lineHeight: 1.0,
-            letterSpacing: '0.03em',
-            maxWidth: '75%',
-            textShadow: '0 2px 24px rgba(0,0,0,0.35)',
+            lineHeight: 1.06,
+            letterSpacing: '0.01em',
+            textTransform: 'uppercase',
+            margin: 0,
           }}>
-            SIP PURE.<br />FEEL NATURE.
-          </h1>
-        </div>
+            TwisTea<br />Organic Tea
+          </h2>
 
-        {/* ── BOTTOM: badge + description + CTA ── */}
-        <div style={{ maxWidth: '500px' }}>
-
-          {/* Brand badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full"
-            style={{ background: 'rgba(27,67,50,0.9)', border: '1px solid rgba(212,168,83,0.35)' }}>
-            <Leaf size={12} style={{ color: '#D4A853', flexShrink: 0 }} />
-            <span style={{
-              fontFamily: 'Inter, sans-serif', fontSize: '10px', fontWeight: 700,
-              letterSpacing: '2.5px', color: '#D4A853', textTransform: 'uppercase',
-            }}>
-              TwisTea Organic Tea
-            </span>
-          </div>
-
-          {/* Description */}
           <p style={{
-            fontFamily: 'Inter, sans-serif', fontSize: '15px',
-            color: 'rgba(255,255,255,0.7)', lineHeight: '1.85',
-            marginBottom: '28px',
+            fontFamily: 'Inter, sans-serif',
+            fontSize: 'clamp(12px, 1.1vw, 15px)',
+            color: 'rgba(255,255,255,0.82)',
+            lineHeight: '1.72',
+            margin: 0,
+            maxWidth: '360px',
           }}>
-            Premium teas sourced directly from India's finest gardens.
-            Farm-fresh, certified organic, delivered to your door.
+            Discover The Essence Of Wellness In Every Sip —Naturally
+            Brewed From The Finest Organic Leaves.
           </p>
 
-          {/* CTA buttons */}
-          <div className="flex flex-wrap gap-3 mb-10">
-            <button
-              onClick={() => navigate('/products?category=tea')}
-              className="inline-flex items-center gap-2 transition-all duration-200 hover:brightness-110 active:scale-95"
-              style={{
-                background: '#1B4332', color: '#FFFFFF', borderRadius: '6px',
-                padding: '13px 26px', fontFamily: 'Inter, sans-serif',
-                fontSize: '14px', fontWeight: 600, border: '2px solid #1B4332',
-              }}>
-              Shop Now <ArrowRight size={15} />
-            </button>
-            <button
-              onClick={() => navigate('/products')}
-              className="inline-flex items-center gap-2 transition-all duration-200 hover:bg-white/10 active:scale-95"
-              style={{
-                background: 'transparent', color: '#FFFFFF', borderRadius: '6px',
-                padding: '13px 26px', fontFamily: 'Inter, sans-serif',
-                fontSize: '14px', fontWeight: 600,
-                border: '2px solid rgba(255,255,255,0.35)',
-              }}>
-              Explore Collection
-            </button>
-          </div>
+          <button
+            onClick={() => navigate('/products')}
+            className="transition-all duration-200 hover:brightness-110 active:scale-95"
+            style={{
+              background: '#3AB449',
+              color: '#FFFFFF',
+              borderRadius: '8px',
+              padding: 'clamp(10px, 1.1vw, 13px) clamp(20px, 2vw, 28px)',
+              fontFamily: "'Outfit', Inter, sans-serif",
+              fontSize: 'clamp(11px, 0.9vw, 13px)',
+              fontWeight: 700,
+              letterSpacing: '2px',
+              textTransform: 'uppercase',
+              width: 'fit-content',
+              border: 'none',
+              cursor: 'pointer',
+            }}>
+            SHOP NOW
+          </button>
+        </div>
 
-          {/* Trust strip */}
-          <div className="flex items-center gap-5 flex-wrap">
-            {['50+ Varieties', '10K+ Customers', 'Pan-India Delivery'].map((t, i, a) => (
-              <div key={t} className="flex items-center gap-5">
-                <span style={{
-                  fontFamily: 'Inter, sans-serif', fontSize: '11.5px',
-                  color: 'rgba(255,255,255,0.42)', letterSpacing: '0.3px',
-                }}>{t}</span>
-                {i < a.length - 1 && (
-                  <span style={{ width: 1, height: 11, background: 'rgba(255,255,255,0.18)', display: 'inline-block' }} />
-                )}
-              </div>
-            ))}
-          </div>
+        {/* ── Product stack — bottom-right, Figma: 160×336, gap:16 ── */}
+        <div style={{
+          position: 'absolute',
+          right: 'clamp(12px, 2.5vw, 36px)',
+          bottom: 'clamp(12px, 2.5vw, 36px)',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 'clamp(8px, 1.1vw, 16px)',
+          width: 'clamp(80px, 11.1vw, 160px)',
+          zIndex: 3,
+        }}>
+          {[
+            '/images/product2-removebg-preview.png',
+            '/images/product1-removebg-preview.png',
+          ].map((src, i) => (
+            <img
+              key={i}
+              src={src}
+              alt="TwisTea product"
+              style={{
+                width: '100%',
+                aspectRatio: '1 / 1',
+                objectFit: 'contain',
+                filter: 'drop-shadow(0 6px 16px rgba(0,0,0,0.30))',
+              }}
+            />
+          ))}
         </div>
 
       </div>
+
+      {/*
+        ── Tea leaves ──
+        Sibling of card → NOT clipped by card's overflow:hidden.
+        position: absolute relative to section.
+        bottom: 0 = base of the paddingBottom white space.
+        Height > paddingBottom so leaves reach up INTO the card visually.
+      */}
+      <img
+        src="/images/teapng.parspng.com-7 2.png"
+        alt=""
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          bottom: 0,
+          left: 'clamp(40px, 5vw, 80px)',
+          height: 'clamp(180px, 30vw, 390px)',
+          width: 'auto',
+          objectFit: 'contain',
+          zIndex: 10,
+          pointerEvents: 'none',
+          filter: 'drop-shadow(0 8px 20px rgba(0,0,0,0.22))',
+        }}
+      />
+
     </section>
   );
 }
@@ -154,25 +212,30 @@ function Hero() {
    2. MARQUEE
    ════════════════════════════════════════ */
 function Marquee() {
-  const items = Array(10).fill('SIP PURE. FEEL NATURE.');
+  const items = Array(8).fill('SIP PURE. FEEL NATURE.');
   return (
     <div className="overflow-hidden" style={{
-      background: '#1B4332',
-      borderTop: '1px solid rgba(212,168,83,0.18)',
-      borderBottom: '1px solid rgba(212,168,83,0.18)',
-      padding: '14px 0',
+      background: '#ffffff',
+      borderTop: '1px solid #efefef',
+      borderBottom: '1px solid #efefef',
+      padding: 'clamp(14px, 2vw, 26px) 0',
     }}>
       <div className="flex marquee-inner whitespace-nowrap select-none">
         {[...items, ...items].map((item, i) => (
-          <span key={i} className="inline-flex items-center gap-5 px-8" style={{
-            fontFamily: 'Cinzel, Georgia, serif',
-            fontSize: '11px',
-            fontWeight: 600,
-            letterSpacing: '3.5px',
-            color: 'rgba(255,255,255,0.65)',
-            textTransform: 'uppercase',
-          }}>
-            <Leaf size={10} style={{ color: '#D4A853', flexShrink: 0 }} />
+          <span
+            key={i}
+            className="inline-flex items-center"
+            style={{
+              fontFamily: "'Outfit', 'Inter', Arial, sans-serif",
+              fontSize: 'clamp(1.4rem, 3.2vw, 3rem)',
+              fontWeight: 800,
+              letterSpacing: '0.01em',
+              textTransform: 'uppercase',
+              padding: '0 clamp(20px, 3vw, 48px)',
+              color: i % 2 === 0 ? '#3AB449' : 'transparent',
+              WebkitTextStroke: i % 2 === 0 ? 'none' : '2px #3AB449',
+            }}
+          >
             {item}
           </span>
         ))}

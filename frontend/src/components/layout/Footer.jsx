@@ -9,11 +9,12 @@ export default function Footer() {
 
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2.5 mb-4">
-              <div className="w-8 h-8 rounded-full bg-[#1B4332] flex items-center justify-center">
-                <span className="text-white font-bold text-sm" style={{ fontFamily: 'Playfair Display, serif' }}>T</span>
-              </div>
-              <span className="font-bold text-lg" style={{ fontFamily: 'Playfair Display, serif' }}>Twistea</span>
+            <div className="mb-4">
+              <img
+                src="/images/logo1.png"
+                alt="TwisTea"
+                style={{ height: '56px', width: 'auto', objectFit: 'contain', borderRadius: '8px', display: 'block' }}
+              />
             </div>
             <p className="text-white/50 text-sm leading-relaxed mb-5">
               India's finest artisan teas, sourced from 40+ family-run gardens. Delivered fresh to your door.
